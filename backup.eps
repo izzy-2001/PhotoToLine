@@ -1,0 +1,189 @@
+
+1 setlinejoin
+1 setlinecap
+0.0 setgray
+0.3 setlinewidth
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%        This Postscript is Copyright (c) 2017, Peter J Billam          %
+% Permission is granted  to any individual or institution to use, copy, %
+% modify or redistribute this software, so long as it is not resold for %
+% profit, and provided this notice is retained. It is provided "as is", %
+% without any express or implied warranty.    http://www.pjb.com.au     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/irand {   % usage: n irand   ->  a random integer 0 .. n-1
+  5 dict begin
+  /n exch round cvi def
+  n 0 eq { 0   % 20210428 defend against mod 0
+  } { rand n mod
+  } ifelse
+  end
+} bind def
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+/pixel {4 dict begin
+    /startx exch def
+    /starty exch def
+    /gval exch def
+    /pxsize exch def
+    /x startx def
+    /y starty pxsize 2 div add def
+
+    /numlines maxlines gval div def
+    newpath
+    x y moveto
+    
+    1 1 numlines {
+        pxsize irand
+        /x exch def
+        /x x startx add def
+        pxsize irand
+        /y exch def
+        /y y starty add def
+        x y lineto
+        
+    } for
+    
+    /x startx pxsize add def
+    /y starty pxsize 2 div add def
+    x y lineto
+    
+    stroke
+
+end } def
+
+/rightRowEndPixel {4 dict begin
+    /startx exch def
+    /starty exch def
+    /gval exch def
+    /pxsize exch def
+    /x startx def
+    /y starty pxsize 2 div add def
+
+    /numlines maxlines gval div def
+    newpath
+    x y moveto
+    
+    1 1 numlines {
+        pxsize irand
+        /x exch def
+        /x x startx add def
+        pxsize irand
+        /y exch def
+        /y y starty add def
+        x y lineto
+        
+    } for
+    
+    /shift pxsize 2 div def
+    /x startx shift add def
+    /y starty def
+    x y lineto
+    
+    stroke
+
+end } def
+
+/rightRowBeginPixel {4 dict begin
+    /startx exch def
+    /starty exch def
+    /gval exch def
+    /pxsize exch def
+    /x startx pxsize 2 div add def
+    /y starty pxsize add def
+
+    /numlines maxlines gval div def
+    newpath
+    x y moveto
+    
+    1 1 numlines {
+        pxsize irand
+        /x exch def
+        /x x startx add def
+        pxsize irand
+        /y exch def
+        /y y starty add def
+        x y lineto
+        
+    } for
+    
+    /shift pxsize 2 div def
+    /x startx def
+    /y starty shift add def
+    x y lineto
+    
+    stroke
+
+end } def
+
+/leftRowBeginPixel {4 dict begin
+    /startx exch def
+    /starty exch def
+    /gval exch def
+    /pxsize exch def
+
+    /numlines maxlines gval div def
+    newpath
+    
+    /shift pxsize 2 div def
+    /x startx shift add def
+    /y starty pxsize add def
+    x y moveto
+
+    /x startx def
+    /y starty def
+    
+    1 1 numlines {
+        pxsize irand
+        /x exch def
+        /x x startx add def
+        pxsize irand
+        /y exch def
+        /y y starty add def
+        x y lineto
+        
+    } for
+    
+    /x startx pxsize add def
+    /y starty pxsize 2 div add def
+    x y lineto
+    
+    stroke
+
+end } def
+
+/leftRowEndPixel {4 dict begin
+    /startx exch def
+    /starty exch def
+    /gval exch def
+    /pxsize exch def
+
+    /numlines maxlines gval div def
+    newpath
+    
+    /x startx pxsize add def
+    /y starty pxsize 2 div add def
+    x y moveto
+
+    /x startx def
+    /y starty def
+    
+    1 1 numlines {
+        pxsize irand
+        /x exch def
+        /x x startx add def
+        pxsize irand
+        /y exch def
+        /y y starty add def
+        x y lineto
+        
+    } for
+    
+    /shift pxsize 2 div def
+    /x startx shift add def
+    /y starty def
+    x y lineto
+    
+    stroke
+
+end } def
